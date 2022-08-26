@@ -1,17 +1,28 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Browse from './components/Browse';
-import Header from './components/Header';
+import React, { useEffect, useState } from 'react';
+import Movie from './components/Movie';
+import axios from 'axios';
 
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  const key = process.env.REACT_APP_FEATURE_KEY;
+
+  useEffect(() => {
+    axios.get(key)
+    .then((res) => {
+      setMovies(res.data.results);
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }, []);
+
+  
   return (
-    <div className="App">
-      <Header />
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/browse' element={<Browse/>}/>
-        </Routes>
+    <div className="movie-container">
+         {movies.length > 0 && movies.map((movie) =>
+          <Movie key={movie.id} {...movie} />
+         )}
     </div>
   );
 }
