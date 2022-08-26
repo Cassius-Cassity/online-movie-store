@@ -18,6 +18,19 @@ function Header(){
                                 Browse
                             </Link>
                         </li>
+
+                        <li>
+                            <Link id='search' to='/search'>
+                                <form id='form'>
+                                    <input 
+                                        type='text'
+                                        placeholder='Search'
+                                        id='search'
+                                        className='search'
+                                        />
+                                </form>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
