@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Movie from './components/Movie';
+import Header from './components/Header';
 import axios from 'axios';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   
   return (
     <div className="movie-container">
+      <Header/>
          {movies.length > 0 && movies.map((movie) =>
           <Movie key={movie.id} {...movie} />
          )}
